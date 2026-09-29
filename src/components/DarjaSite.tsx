@@ -11,7 +11,6 @@ const sections = ["work", "about", "bridal", "prices", "contact"] as const;
 
 export function DarjaSite({ lang }: { lang: Language }) {
   const t = copy[lang];
-  const other = lang === "et" ? "ru" : "et";
   const [filter, setFilter] = useState<Category>("all");
   const [selected, setSelected] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
