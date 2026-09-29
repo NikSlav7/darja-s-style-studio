@@ -24,11 +24,9 @@ jobs:
           STATIC_BUILD: "1"
           BASE_PATH: /${{ github.event.repository.name }}/
       - name: Add redirect + fallback pages
-        run: |
-          B="/${{ github.event.repository.name }}/"
-          printf '<!doctype html><meta charset="utf-8"><title>Darja</title><meta http-equiv="refresh" content="0;url=%set/"><link rel="canonical" href="%set/"><script>location.replace("%set/"+location.hash)</script>' "$B" "$B" "$B" > dist/client/index.html
-          cp dist/client/index.html dist/client/404.html
-          touch dist/client/.nojekyll
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: bun scripts/prepare-github-pages.ts
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/client
