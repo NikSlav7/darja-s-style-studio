@@ -12,7 +12,9 @@ await mkdir(outputDirectory, { recursive: true });
 
 const generatedFiles = await readdir(outputDirectory);
 if (!generatedFiles.includes("et") || !generatedFiles.includes("ru")) {
-  throw new Error("The static build did not generate both language pages.");
+  throw new Error(
+    `The static build did not generate both language pages. dist/client contains: ${JSON.stringify(generatedFiles)}`,
+  );
 }
 
 const basePath = `/${repositoryName}/`;
