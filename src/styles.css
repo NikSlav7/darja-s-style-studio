@@ -121,3 +121,20 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.6rem); }
 }
 @media (max-width: 390px) { .hero h1 { font-size: 4.2rem; }.hero-buttons .inline-flex { font-size: 9px; padding-inline: 10px; }.contact-details { gap: 20px 10px; }.contact-details p, .contact-details a { font-size: 18px; }.form-row { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.field-error { font-size: 11px; font-weight: 400; text-transform: none; letter-spacing: .02em; color: #b0483e; }
+.contact-form input[aria-invalid="true"], .contact-form select[aria-invalid="true"], .contact-form textarea[aria-invalid="true"] { border-bottom-color: #b0483e; }
+.consent-row { flex-direction: row !important; align-items: flex-start; gap: 14px !important; cursor: pointer; }
+.consent-row input[type="checkbox"] { width: 20px; height: 20px; min-width: 20px; margin-top: 2px; accent-color: var(--foreground); cursor: pointer; }
+.consent-row span { font-size: 12px; font-weight: 400; text-transform: none; letter-spacing: .02em; line-height: 1.6; color: var(--muted-foreground); }
+.form-success { display: flex; flex-direction: column; gap: 16px; padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.form-success-title { font-family: var(--font-display); font-size: 42px; line-height: 1.1; }
+.form-success p:last-child { color: var(--muted-foreground); font-size: 15px; line-height: 1.7; }
+.form-error { border: 1px solid #b0483e; padding: 22px 24px; display: flex; flex-direction: column; gap: 16px; }
+.form-error p { font-size: 13px; line-height: 1.6; color: #b0483e; }
+.form-error-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.form-alt { display: flex; gap: 26px; flex-wrap: wrap; margin-top: -6px; }
+.form-alt .text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
+.spin { animation: form-spin 1s linear infinite; }
+@keyframes form-spin { to { transform: rotate(360deg); } }
+@media (max-width: 640px) { .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; padding: 13px 0; } .contact-form button[type="submit"] { width: 100%; justify-content: center; min-height: 54px; } .form-alt { flex-direction: column; gap: 14px; } .form-alt .text-link { min-height: 44px; } }
