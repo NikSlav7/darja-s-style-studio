@@ -7,6 +7,9 @@ const base = process.env['BASE_PATH'] || "/";
 
 export default defineConfig({
   vite: isStatic ? { base } : {},
+  // Pin the output layout in CI; otherwise Nitro auto-detects GitHub Actions
+  // and may emit the static files outside dist/client.
+  nitro: isStatic ? { preset: "cloudflare-module" } : true,
   tanstackStart: isStatic
     ? {
         server: { entry: "server" },
