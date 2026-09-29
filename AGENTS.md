@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep bilingual public copy and gallery/service media configuration in `src/lib/site-data.ts` so content changes do not require layout edits.
+- Use `/et` and `/ru` as language-specific single-page experiences and redirect `/` to `/et` so each language has an indexable URL.

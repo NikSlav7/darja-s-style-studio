@@ -1,0 +1,4 @@
+- [x] Build an Estonian/Russian editorial site using Darja's supplied photos in the correct roles.
+- [x] Reserve clearly labeled future portrait, at-work, and behind-the-scenes media spaces.
+- [x] Add portfolio, bridal, services, reviews, social, and contact experiences with editable content.
+- [x] Add language-specific discoverability metadata and structured business information.
