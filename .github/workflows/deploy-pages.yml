@@ -1,3 +1,4 @@
+# Rebuilds and publishes the static site on every push to main.
 name: Deploy to GitHub Pages
 on:
   push:
