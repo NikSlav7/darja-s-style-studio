@@ -15,8 +15,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
+      - uses: actions/configure-pages@v5
       - run: bun install
       - name: Static build
         run: bunx vite build
@@ -27,7 +28,7 @@ jobs:
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}
         run: bun scripts/prepare-github-pages.ts
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: dist/client
   deploy:
