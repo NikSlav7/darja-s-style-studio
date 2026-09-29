@@ -1,18 +1,18 @@
-import darja1 from "@/assets/darja1.jpg.asset.json";
-import darja2 from "@/assets/darja2.jpg.asset.json";
-import darja3 from "@/assets/darja3.jpg.asset.json";
-import darja5 from "@/assets/darja5.jpg.asset.json";
-import darja6 from "@/assets/darja6.jpg.asset.json";
+import darja1 from "@/assets/darja1.jpg";
+import darja2 from "@/assets/darja2.jpg";
+import darja3 from "@/assets/darja3.jpg";
+import darja5 from "@/assets/darja5.jpg";
+import darja6 from "@/assets/darja6.jpg";
 
 export type Language = "et" | "ru";
 export type Category = "all" | "bridal" | "evening" | "makeup" | "brows";
 
 export const media = {
-  darja: darja1.url,
-  brideBack: darja2.url,
-  makeupBeforeAfter: darja3.url,
-  bridePortrait: darja5.url,
-  eveningBeforeAfter: darja6.url,
+  darja: darja1,
+  brideBack: darja2,
+  makeupBeforeAfter: darja3,
+  bridePortrait: darja5,
+  eveningBeforeAfter: darja6,
 };
 
 export const gallery: { id: number; src: string; category: Exclude<Category, "all">; type: "photo" | "video"; alt: Record<Language, string>; className: string }[] = [
