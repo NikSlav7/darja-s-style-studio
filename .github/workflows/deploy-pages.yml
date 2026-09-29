@@ -22,10 +22,11 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: bun install --frozen-lockfile
       - name: Static build
-        run: bunx vite build
+        run: bun run build
         env:
           STATIC_BUILD: "1"
           BASE_PATH: /${{ github.event.repository.name }}/
+          NITRO_PRESET: cloudflare-module
       - name: Add redirect + fallback pages
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}

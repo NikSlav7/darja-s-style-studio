@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir, rename, stat, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, readdir, rename, rm, stat, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 
 const root = process.cwd();
@@ -21,6 +21,25 @@ async function walk(dir: string, out: string[] = []): Promise<string[]> {
 
 await mkdir(outputDirectory, { recursive: true });
 
+// Nitro can select a GitHub-specific output directory from CI environment
+// variables. Normalise that directory before preparing the Pages artifact.
+const possibleOutputDirectories = [
+  outputDirectory,
+  join(root, "dist", "public"),
+  join(root, ".output", "public"),
+  join(root, ".output", "client"),
+];
+for (const candidate of possibleOutputDirectories.slice(1)) {
+  const hasEt = await exists(join(candidate, "et", "index.html"));
+  const hasRu = await exists(join(candidate, "ru", "index.html"));
+  if (hasEt && hasRu) {
+    await rm(outputDirectory, { recursive: true, force: true });
+    await mkdir(outputDirectory, { recursive: true });
+    await cp(candidate, outputDirectory, { recursive: true });
+    break;
+  }
+}
+
 // Normalise each language page to dist/client/<lang>/index.html wherever the prerenderer put it.
 for (const lang of ["et", "ru"]) {
   const target = join(outputDirectory, lang, "index.html");
@@ -42,8 +61,11 @@ for (const lang of ["et", "ru"]) {
 const missing = [];
 for (const lang of ["et", "ru"]) if (!(await exists(join(outputDirectory, lang, "index.html")))) missing.push(lang);
 if (missing.length) {
-  const found = await walk(join(root, "dist"));
-  const msg = `Missing pages: ${missing.join(",")}. HTML found under dist: ${JSON.stringify(found)}`;
+  const found = [
+    ...(await walk(join(root, "dist"))),
+    ...(await walk(join(root, ".output"))),
+  ];
+  const msg = `Missing pages: ${missing.join(",")}. HTML found in build output: ${JSON.stringify(found)}`;
   console.log(`::error title=Static pages missing::${msg}`);
   throw new Error(msg);
 }
