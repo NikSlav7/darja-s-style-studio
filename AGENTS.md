@@ -9,6 +9,8 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
+- ALL changes must be GitHub Pages-ready straight away: static build only (STATIC_BUILD=1 path), every path/asset/link respects BASE_PATH via `import.meta.env.BASE_URL`, media bundled in the project (never Lovable-hosted URLs), head tags/canonical/sitemap use absolute final URLs. Verify with `STATIC_BUILD=1 BASE_PATH=/darja-s-style-studio/ bunx vite build` producing `dist/client/et/index.html` + `dist/client/ru/index.html` before finishing.
+- No backend: booking form posts directly to the Google Apps Script endpoint in `src/lib/booking-config.ts`; never add server functions, Lovable Cloud, Supabase, or form services.
 - Keep bilingual public copy and gallery/service media configuration in `src/lib/site-data.ts` so content changes do not require layout edits.
 - Use `/et` and `/ru` as language-specific single-page experiences and redirect `/` to `/et` so each language has an indexable URL.
 - Keep GitHub Pages output preparation in `scripts/prepare-github-pages.ts` so redirects and artifact checks remain portable and testable.
