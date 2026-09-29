@@ -15,8 +15,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
+      - uses: actions/configure-pages@v5
       - run: bun install
       - name: Static build
         run: bunx vite build
@@ -24,12 +25,10 @@ jobs:
           STATIC_BUILD: "1"
           BASE_PATH: /${{ github.event.repository.name }}/
       - name: Add redirect + fallback pages
-        run: |
-          B="/${{ github.event.repository.name }}/"
-          printf '<!doctype html><meta charset="utf-8"><title>Darja</title><meta http-equiv="refresh" content="0;url=%set/"><link rel="canonical" href="%set/"><script>location.replace("%set/"+location.hash)</script>' "$B" "$B" "$B" > dist/client/index.html
-          cp dist/client/index.html dist/client/404.html
-          touch dist/client/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: bun scripts/prepare-github-pages.ts
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: dist/client
   deploy:
