@@ -15,3 +15,5 @@
 - Use `/et` and `/ru` as language-specific single-page experiences and redirect `/` to `/et` so each language has an indexable URL.
 - Keep GitHub Pages output preparation in `scripts/prepare-github-pages.ts` so redirects and artifact checks remain portable and testable.
 - TanStack Router must use `trailingSlash: "preserve"` in `src/router.tsx`: the static prerenderer requests trailing-slash URLs and the default ("never") causes an infinite redirect loop that skips prerendering.
+
+- Keep gallery category content and labels in the shared bilingual data module, and use bundled image files for static GitHub Pages compatibility.
