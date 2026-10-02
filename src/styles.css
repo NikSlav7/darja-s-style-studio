@@ -196,3 +196,32 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.6rem); }
   .carousel-book { margin-top: 20px; min-height: 46px; }
 }
 @media (prefers-reduced-motion: reduce) { .carousel-track, .carousel-thumbs { transition: none; scroll-behavior: auto; } }
+
+/* Quiet editorial rhythm for the service menu */
+.price-group { border-top: 1px solid var(--border); padding-top: 22px; }
+.price-group + .price-group { margin-top: 34px; }
+.price-group-title { color: var(--primary); margin-bottom: 18px; padding-bottom: 0; }
+.price-list .price-row { align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid color-mix(in oklab, var(--border) 68%, transparent); line-height: 1.3; }
+.price-list .price-row > span:first-child { min-width: 0; }
+.price-list .price-dots { border: 0; }
+.price-list .price-value { font-family: var(--font-display); font-size: 22px; font-style: italic; line-height: 1; white-space: nowrap; }
+.price-list .price-group > div:last-of-type .price-row { border-bottom: 0; }
+.price-note { border-top: 1px solid var(--border); }
+.price-booking { padding-top: 26px; border-top: 1px solid var(--border); }
+
+/* Give the two-line contact title and its supporting text independent room. */
+.contact-heading h2 { line-height: 1.08; overflow-wrap: break-word; }
+.contact-heading h2 + p { margin-top: 22px; }
+.contact-details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.contact-details > div { min-width: 0; }
+.contact-details a { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .contact-heading h2 { font-size: clamp(3.05rem, 11vw, 4.5rem); }
+  .contact-heading h2 + p { margin-top: 24px; }
+  .contact-details { gap: 30px 16px; }
+  .price-list .price-row { font-size: 20px; }
+}
+@media (max-width: 360px) {
+  .contact-details { grid-template-columns: 1fr; gap: 20px; }
+  .contact-heading h2 { font-size: 3.05rem; }
+}
