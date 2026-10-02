@@ -3,6 +3,9 @@ import darja2 from "@/assets/darja2.jpg";
 import darja3 from "@/assets/darja3.jpg";
 import darja5 from "@/assets/darja5.jpg";
 import darja6 from "@/assets/darja6.jpg";
+import darjaWorking from "@/assets/darja-working.jpg";
+import darjaWorking2 from "@/assets/darja-working-2.jpg";
+import darjaStudio from "@/assets/darja-studio.jpg";
 
 export type Language = "et" | "ru";
 export type Category = "all" | "bridal" | "evening" | "makeup" | "brows";
@@ -13,6 +16,9 @@ export const media = {
   makeupBeforeAfter: darja3,
   bridePortrait: darja5,
   eveningBeforeAfter: darja6,
+  darjaAtWork: darjaWorking,
+  darjaWithBride: darjaWorking2,
+  darjaStudio: darjaStudio,
 };
 
 export const gallery: { id: number; src: string; category: Exclude<Category, "all">; type: "photo" | "video"; alt: Record<Language, string>; className: string }[] = [
@@ -20,6 +26,7 @@ export const gallery: { id: number; src: string; category: Exclude<Category, "al
   { id: 2, src: media.brideBack, category: "bridal", type: "photo", alt: { et: "Pruudisoeng tagantvaates", ru: "Свадебная причёска со спины" }, className: "gallery-medium" },
   { id: 3, src: media.eveningBeforeAfter, category: "evening", type: "photo", alt: { et: "Õhtusoeng ja jumestus enne ning pärast", ru: "Вечерняя причёска и макияж до и после" }, className: "gallery-medium" },
   { id: 4, src: media.makeupBeforeAfter, category: "makeup", type: "photo", alt: { et: "Jumestus enne ja pärast", ru: "Макияж до и после" }, className: "gallery-tall" },
+  { id: 5, src: media.darjaWithBride, category: "bridal", type: "photo", alt: { et: "Pruit punaste lokkidega Darja juures", ru: "Невеста с красными локонами в работе Дарьи" }, className: "gallery-medium" },
 ];
 
 export const services = ["bridalHair", "bridalMakeup", "eveningHair", "eventMakeup", "brows", "travel"] as const;
