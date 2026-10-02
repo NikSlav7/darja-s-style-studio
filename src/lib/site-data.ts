@@ -13,6 +13,14 @@ import before5 from "@/assets/before5.jpg";
 import before6 from "@/assets/before6.jpg";
 import before7 from "@/assets/before7.jpg";
 import before8 from "@/assets/before8.jpg";
+import pruut1 from "@/assets/pruut1.jpg";
+import pruut2 from "@/assets/pruut2.jpg";
+import pruut3 from "@/assets/pruut3.jpg";
+import soeng1 from "@/assets/soeng1.jpg";
+import soeng2 from "@/assets/soeng2.jpg";
+import soeng3 from "@/assets/soeng3.jpg";
+import soeng4 from "@/assets/soeng4.jpg";
+import soeng5 from "@/assets/soeng5.jpg";
 
 export type Language = "et" | "ru";
 export type Category = "beforeAfter" | "bridal" | "hairstyles";
@@ -36,6 +44,14 @@ export const gallery: { id: number; src: string; category: Category; alt: Record
   { id: 6, src: before6, category: "beforeAfter", alt: { et: "Enne ja pärast: pikad lained", ru: "До и после: длинные волны" } },
   { id: 7, src: before7, category: "beforeAfter", alt: { et: "Enne ja pärast: pidulik soeng ja jumestus", ru: "До и после: праздничная причёска и макияж" } },
   { id: 8, src: before8, category: "beforeAfter", alt: { et: "Enne ja pärast: elegantne soeng ja jumestus", ru: "До и после: элегантная причёска и макияж" } },
+  { id: 9, src: pruut1, category: "bridal", alt: { et: "Punaste juustega pruut valges kleidis", ru: "Невеста с рыжими волосами в белом платье" } },
+  { id: 10, src: pruut2, category: "bridal", alt: { et: "Pruut sügiseses pargis", ru: "Невеста в осеннем парке" } },
+  { id: 11, src: pruut3, category: "bridal", alt: { et: "Pruut rõdul valges pulmakleidis", ru: "Невеста на балконе в белом свадебном платье" } },
+  { id: 12, src: soeng1, category: "hairstyles", alt: { et: "Elegantne punutud ülespandud soeng", ru: "Элегантная собранная причёска с плетением" } },
+  { id: 13, src: soeng2, category: "hairstyles", alt: { et: "Pikad tumedad lokid juuksekaunistusega", ru: "Длинные тёмные локоны с украшением" } },
+  { id: 14, src: soeng3, category: "hairstyles", alt: { et: "Hele õhuline ülespandud soeng", ru: "Воздушная собранная причёска на светлых волосах" } },
+  { id: 15, src: soeng4, category: "hairstyles", alt: { et: "Hele tekstuurne ülespandud soeng", ru: "Текстурная собранная причёска на светлых волосах" } },
+  { id: 16, src: soeng5, category: "hairstyles", alt: { et: "Pidulik ülespandud soeng tumedatel juustel", ru: "Праздничная собранная причёска на тёмных волосах" } },
 ];
 
 export const services = ["bridalHair", "bridalMakeup", "eveningHair", "eventMakeup", "brows", "travel"] as const;
