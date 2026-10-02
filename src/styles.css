@@ -225,3 +225,7 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.6rem); }
   .contact-details { grid-template-columns: 1fr; gap: 20px; }
   .contact-heading h2 { font-size: 3.05rem; }
 }
+@media (max-width: 760px) {
+  .contact-grid > .contact-form, .contact-grid > .form-success { order: -1; }
+  .contact-grid { margin-top: 32px; }
+}
