@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingForm } from "@/components/BookingForm";
-import { copy, gallery, media, priceGroups, story, type Category, type Language } from "@/lib/site-data";
+import { PortfolioCarousel } from "@/components/PortfolioCarousel";
+import { copy, media, priceGroups, story, type Language } from "@/lib/site-data";
 
 const FACEBOOK = "https://www.facebook.com/DarjaHairstyles";
 const PHONE = "+37256653706";
@@ -12,32 +13,14 @@ const sections = ["work", "about", "bridal", "prices", "contact"] as const;
 
 export function DarjaSite({ lang }: { lang: Language }) {
   const t = copy[lang];
-  const [filter, setFilter] = useState<Category>("beforeAfter");
-  const [selected, setSelected] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const visible = gallery.filter((item) => item.category === filter);
-  const currentIndex = selected === null ? -1 : visible.findIndex((item) => item.id === selected);
-  const selectedItem = selected === null ? null : gallery.find((item) => item.id === selected);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  useEffect(() => {
-    if (selected === null) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
-      if (event.key === "ArrowRight") setSelected(visible[(currentIndex + 1) % visible.length]?.id ?? null);
-      if (event.key === "ArrowLeft") setSelected(visible[(currentIndex - 1 + visible.length) % visible.length]?.id ?? null);
-    };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
-  }, [selected, currentIndex, visible]);
-
   return <div className="site-shell" lang={lang}>
     <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
       <a className="brand" href="#top" aria-label="Darja — home"><span className="brand-name">darja<span className="brand-dot">.</span></span><span className="brand-sub">soengud · jumestus · kulmud</span></a>
@@ -51,7 +34,7 @@ export function DarjaSite({ lang }: { lang: Language }) {
     <main id="top">
       <section className="hero" aria-labelledby="hero-title"><img className="hero-image" src={media.darjaAtWork} alt={lang === "et" ? "Darja soengutab pruudi juukseid" : "Дарья укладывает волосы невесты"} fetchPriority="high"/><div className="hero-shade"/><div className="hero-content"><p className="eyebrow hero-eyebrow">{t.eyebrow}</p><h1 id="hero-title">{t.heroTitle}</h1><p className="hero-lead">{t.heroText}</p><div className="hero-buttons"><Button asChild variant="editorial" size="lg"><a href="#contact">{t.book}<ArrowUpRight/></a></Button><Button asChild variant="editorialOutline" size="lg" className="hero-outline"><a href="#work">{t.viewWork}<ArrowRight/></a></Button></div></div><span className="hero-side-note">{t.heroCaption}</span><a href="#work" className="hero-scroll">{t.scroll}<ArrowDown size={17}/></a></section>
 
-      <section className="section portfolio-section" id="work"><div className="section-inner"><div className="portfolio-heading"><div><p className="eyebrow">{t.galleryKicker}</p><h2>{t.galleryTitle}</h2></div><p>{t.galleryText}</p></div><div className="filters" role="group" aria-label={t.galleryTitle}>{(["beforeAfter", "bridal", "hairstyles"] as Category[]).map((cat) => <Button key={cat} variant="ghost" className={`filter-button ${filter === cat ? "filter-active" : ""}`} aria-pressed={filter === cat} onClick={() => { setFilter(cat); setSelected(null); }}>{t.filters[cat]}<span className="filter-count">{gallery.filter((item) => item.category === cat).length.toString().padStart(2, "0")}</span></Button>)}</div>{visible.length ? <div key={filter} className="gallery-grid">{visible.map((item, index) => <Button key={item.id} variant="ghost" className={`gallery-item ${item.category === "beforeAfter" ? "gallery-before-after" : ""}`} onClick={() => setSelected(item.id)} aria-label={`${t.viewWork}: ${item.alt[lang]}`}><img src={item.src} alt={item.alt[lang]} loading={index > 1 ? "lazy" : "eager"}/><span className="gallery-overlay"><span>{String(index + 1).padStart(2, "0")} / {String(visible.length).padStart(2, "0")}</span><ArrowUpRight size={22}/></span></Button>)}</div> : <div className="gallery-empty">{t.noWorks}</div>}</div></section>
+      <section className="section portfolio-section" id="work"><div className="section-inner"><div className="portfolio-heading"><div><p className="eyebrow">{t.galleryKicker}</p><h2>{t.galleryTitle}</h2></div><p>{t.galleryText}</p></div><PortfolioCarousel lang={lang}/></div></section>
 
       <section className="section about-section" id="about"><div className="section-inner about-grid"><div className="about-visual"><img src={media.darja} alt={lang === "et" ? "Darja Slavinskaja portree" : "Портрет Дарьи Славинской"} loading="lazy"/><span className="about-photo-mark">Darja Slavinskaja <span>— Tallinn</span></span></div><div className="about-copy"><p className="eyebrow">{t.aboutKicker}</p><h2>{t.aboutTitle}</h2><div className="thin-rule"/><p className="about-opening">{story[lang].intro[0]}</p><div className="about-story">{story[lang].intro.slice(1).map((p) => <p key={p}>{p}</p>)}</div><p className="about-masters">{story[lang].masters}</p><p className="signature">{t.aboutSign}</p></div></div></section>
 
@@ -63,6 +46,6 @@ export function DarjaSite({ lang }: { lang: Language }) {
     </main>
     <footer className="site-footer"><div className="section-inner footer-inner"><div><a className="footer-brand" href="#top">darja<span>.</span></a><p>{t.footer}</p></div><div className="footer-right"><div><a href={`tel:${PHONE}`}>+372 5665 3706</a><a href="mailto:darja_d@mail.ru">darja_d@mail.ru</a></div><div className="footer-langs"><Link to="/et">ET</Link><span>/</span><Link to="/ru">RU</Link></div></div></div><div className="section-inner footer-bottom">© {new Date().getFullYear()} Darja. {t.copyright}</div></footer>
     <div className="mobile-actions"><a href="#contact">{t.book}<ArrowUpRight size={17}/></a><a href={WHATSAPP} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><MessageCircle size={20}/></a></div>
-    {selectedItem && <div className="lightbox" role="dialog" aria-modal="true" aria-label={selectedItem.alt[lang]} onTouchStart={(e) => { const x = e.touches[0]?.clientX; if (x !== undefined) (e.currentTarget as HTMLElement).dataset["touchX"] = String(x); }} onTouchEnd={(e) => { const start = Number((e.currentTarget as HTMLElement).dataset["touchX"]); const end = e.changedTouches[0]?.clientX; if (end !== undefined && Math.abs(end - start) > 50) setSelected(visible[(currentIndex + (end < start ? 1 : -1) + visible.length) % visible.length]?.id ?? null); }}><Button variant="ghost" size="icon" className="lightbox-close" aria-label={t.close} onClick={() => setSelected(null)}><X/></Button><Button variant="ghost" size="icon" className="lightbox-prev" aria-label={t.previous} onClick={() => setSelected(visible[(currentIndex - 1 + visible.length) % visible.length]?.id ?? null)}><ArrowLeft/></Button><img src={selectedItem.src} alt={selectedItem.alt[lang]}/><Button variant="ghost" size="icon" className="lightbox-next" aria-label={t.next} onClick={() => setSelected(visible[(currentIndex + 1) % visible.length]?.id ?? null)}><ArrowRight/></Button><span className="lightbox-caption">{selectedItem.alt[lang]} &nbsp; — &nbsp; {currentIndex + 1} / {visible.length}</span></div>}
+
   </div>;
 }

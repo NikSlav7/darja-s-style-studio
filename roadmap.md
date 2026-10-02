@@ -6,3 +6,4 @@
 - [x] Add three bridal and five hairstyle images to their portfolio categories.
 - [x] Refine portfolio interaction and About presentation without changing Darja's own words.
 - [x] Remove the duplicate social gallery, reviews, and video placeholder; keep section 03 → price list → 06.
+- [x] Replace portfolio grid with a bilingual, swipeable carousel, thumbnails, lightbox, and booking link.
