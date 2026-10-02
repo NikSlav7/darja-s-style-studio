@@ -106,7 +106,7 @@ export const story: Record<Language, { intro: string[]; masters: string; teachKi
     ],
     browsKicker: "Брови",
     brows: "Особое удовольствие мне доставляют клиенты, которые доверяют мне свои брови для коррекции и покраски. Эта часть моей работы — как вишенка на торте: добавляет разнообразия и украшает мою насыщенную студийную жизнь.",
-    closing: ["Для меня нет ничего радостнее, чем видеть улыбки клиентов и успехи учеников.", "Каждая услуга, которую я предлагаю, создана с любовью и заботой, чтобы подчеркнуть вашу уникальную красоту и сделать вас ещё более уверенной и сияющей."],
+    closing: ["Для меня нет ничего радостнее, чем видеть улыбки клиентов.", "Каждая услуга, которую я предлагаю, создана с любовью и заботой, чтобы подчеркнуть вашу уникальную красоту и сделать вас ещё более уверенной и сияющей."],
     booking: ["Если у вас возникли вопросы или вы хотите записаться, пишите в личные сообщения или звоните по телефону ", " — я всегда на связи и с удовольствием помогу выбрать нужную услугу!"],
   },
   et: {
@@ -123,7 +123,7 @@ export const story: Record<Language, { intro: string[]; masters: string; teachKi
     ],
     browsKicker: "Kulmud",
     brows: "Erilist rõõmu pakuvad mulle kliendid, kes usaldavad mulle oma kulmud korrigeerimiseks ja värvimiseks. See osa minu tööst on nagu kirss tordil: lisab mitmekesisust ja kaunistab minu tegusat stuudioelu.",
-    closing: ["Minu jaoks pole midagi rõõmsamat kui näha klientide naeratusi ja õpilaste edu.", "Iga teenus, mida pakun, on loodud armastuse ja hoolega, et rõhutada sinu ainulaadset ilu ning muuta sind veelgi enesekindlamaks ja säravamaks."],
+    closing: ["Minu jaoks pole midagi rõõmsamat kui näha klientide naeratusi.", "Iga teenus, mida pakun, on loodud armastuse ja hoolega, et rõhutada sinu ainulaadset ilu ning muuta sind veelgi enesekindlamaks ja säravamaks."],
     booking: ["Kui sul tekkis küsimusi või soovid aega broneerida, kirjuta mulle privaatsõnum või helista numbril ", " — olen alati kättesaadav ja aitan hea meelega sobiva teenuse valida!"],
   },
 };
