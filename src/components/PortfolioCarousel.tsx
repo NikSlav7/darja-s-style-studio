@@ -59,8 +59,10 @@ export function PortfolioCarousel({ lang }: { lang: Language }) {
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
         event.preventDefault();
         const next = categories[(categories.indexOf(cat) + (event.key === "ArrowRight" ? 1 : -1) + categories.length) % categories.length];
-        switchCategory(next);
-        requestAnimationFrame(() => document.getElementById(`portfolio-tab-${next}`)?.focus());
+        if (next) {
+          switchCategory(next);
+          requestAnimationFrame(() => document.getElementById(`portfolio-tab-${next}`)?.focus());
+        }
       }} onClick={() => switchCategory(cat)}>{t.filters[cat]}<span className="filter-count">{String(gallery.filter((item) => item.category === cat).length).padStart(2, "0")}</span></Button>)}
     </div>
     <div id="portfolio-panel" role="tabpanel" aria-labelledby={`portfolio-tab-${category}`}>
