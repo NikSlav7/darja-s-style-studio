@@ -25,11 +25,11 @@ jobs:
         run: bun run build
         env:
           STATIC_BUILD: "1"
-          BASE_PATH: /${{ github.event.repository.name }}/
+          BASE_PATH: /
           NITRO_PRESET: cloudflare-module
       - name: Add redirect + fallback pages
         env:
-          REPOSITORY_NAME: ${{ github.event.repository.name }}
+          BASE_PATH: /
         run: bun scripts/prepare-github-pages.ts
       - uses: actions/upload-pages-artifact@v4
         with:
