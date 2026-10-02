@@ -6,12 +6,20 @@ import darja6 from "@/assets/darja6.jpg";
 import darjaWorking from "@/assets/darja-working.jpg";
 import darjaWorking2 from "@/assets/darja-working-2.jpg";
 import darjaStudio from "@/assets/darja-studio.jpg";
+import darjaPortrait from "@/assets/darja_portree.jpg";
+import before1 from "@/assets/before1.jpg";
+import before2 from "@/assets/before2.jpg";
+import before3 from "@/assets/before3.jpg";
+import before5 from "@/assets/before5.jpg";
+import before6 from "@/assets/before6.jpg";
+import before7 from "@/assets/before7.jpg";
+import before8 from "@/assets/before8.jpg";
 
 export type Language = "et" | "ru";
-export type Category = "all" | "bridal" | "evening" | "makeup" | "brows";
+export type Category = "beforeAfter" | "bridal" | "hairstyles";
 
 export const media = {
-  darja: darja1,
+  darja: darjaPortrait,
   brideBack: darja2,
   makeupBeforeAfter: darja3,
   bridePortrait: darja5,
@@ -21,12 +29,14 @@ export const media = {
   darjaStudio: darjaStudio,
 };
 
-export const gallery: { id: number; src: string; category: Exclude<Category, "all">; type: "photo" | "video"; alt: Record<Language, string>; className: string }[] = [
-  { id: 1, src: media.bridePortrait, category: "bridal", type: "photo", alt: { et: "Pruudi soeng ja jumestus", ru: "Свадебная причёска и макияж невесты" }, className: "gallery-tall" },
-  { id: 2, src: media.brideBack, category: "bridal", type: "photo", alt: { et: "Pruudisoeng tagantvaates", ru: "Свадебная причёска со спины" }, className: "gallery-medium" },
-  { id: 3, src: media.eveningBeforeAfter, category: "evening", type: "photo", alt: { et: "Õhtusoeng ja jumestus enne ning pärast", ru: "Вечерняя причёска и макияж до и после" }, className: "gallery-medium" },
-  { id: 4, src: media.makeupBeforeAfter, category: "makeup", type: "photo", alt: { et: "Jumestus enne ja pärast", ru: "Макияж до и после" }, className: "gallery-tall" },
-  { id: 5, src: media.darjaWithBride, category: "bridal", type: "photo", alt: { et: "Pruit punaste lokkidega Darja juures", ru: "Невеста с красными локонами в работе Дарьи" }, className: "gallery-medium" },
+export const gallery: { id: number; src: string; category: Category; alt: Record<Language, string> }[] = [
+  { id: 1, src: before1, category: "beforeAfter", alt: { et: "Enne ja pärast: tumedad lained ning jumestus", ru: "До и после: тёмные локоны и макияж" } },
+  { id: 2, src: before2, category: "beforeAfter", alt: { et: "Enne ja pärast: pehmed lokid ning jumestus", ru: "До и после: мягкие локоны и макияж" } },
+  { id: 3, src: before3, category: "beforeAfter", alt: { et: "Enne ja pärast: pruudi soeng ning jumestus", ru: "До и после: свадебная причёска и макияж" } },
+  { id: 5, src: before5, category: "beforeAfter", alt: { et: "Enne ja pärast: kohevad lokid", ru: "До и после: пышные локоны" } },
+  { id: 6, src: before6, category: "beforeAfter", alt: { et: "Enne ja pärast: pikad lained", ru: "До и после: длинные волны" } },
+  { id: 7, src: before7, category: "beforeAfter", alt: { et: "Enne ja pärast: pidulik soeng ja jumestus", ru: "До и после: праздничная причёска и макияж" } },
+  { id: 8, src: before8, category: "beforeAfter", alt: { et: "Enne ja pärast: elegantne soeng ja jumestus", ru: "До и после: элегантная причёска и макияж" } },
 ];
 
 export const services = ["bridalHair", "bridalMakeup", "eveningHair", "eventMakeup", "brows", "travel"] as const;
@@ -37,7 +47,7 @@ export const copy = {
     book: "Broneeri aeg", viewWork: "Vaata töid", eyebrow: "Soengud · jumestus · kulmud · Tallinn",
     heroTitle: "Sinu päev. Sinu ilu.", heroText: "Soengud ja jumestus, milles tunned end iseendana — ainult kaunimana.", heroCaption: "Pulmapäeva ilu algab siit", scroll: "Keri alla",
     galleryKicker: "Portfoolio / 01", galleryTitle: "Ilu, mis jääb meelde.", galleryText: "Pehmed lained, hoolikalt seatud juuksed ja jumestus, milles oled ikka sina ise.",
-    filters: { all: "Kõik tööd", bridal: "Pruudid", evening: "Õhtusoengud", makeup: "Jumestus", brows: "Kulmud" },
+    filters: { beforeAfter: "Enne ja pärast", bridal: "Pruudid", hairstyles: "Soengud" },
     noWorks: "Selle kategooria tööd lisanduvad peagi.", close: "Sulge", next: "Järgmine foto", previous: "Eelmine foto",
     aboutKicker: "Saame tuttavaks / 02", aboutTitle: "Tere, mina olen Darja.", aboutP1: "Panen igasse soengusse ja jumestusse oma südame. Minu jaoks ei ole kõige ilusam hetk peegli ees mitte viimane pintslitõmme, vaid see, kui näen sinu näol õnnelikku naeratust.", aboutP2: "Olen spetsialiseerunud pruudisoengutele ja pulmajumestusele, kuid armastan luua ka õhtuseid soenguid ja viimistleda kulme. Ootan sind oma Tallinna stuudios — või tulen sinu tähtsal päeval ise sinu juurde. Räägin eesti ja vene keeles.", aboutSign: "Soojusega, Darja", futurePortrait: "Foto: Darja portree", 
     bridalKicker: "Pulmapäev / 03", bridalTitle: "Hommik, mida tahad mäletada.", bridalText: "Pulmahommikul võiksid keskenduda vaid sellele, mis päriselt loeb. Leiame proovisoengus koos sinu stiili ning pulmapäeval hoolitsen mina selle eest, et tunneksid end kaunilt ja vabalt.", bridalTravel: "Tulen ka mõisatesse ja peopaikadesse üle Eesti.", steps: ["Proovisoeng", "Pulmahommik", "Viimane pilk peeglisse"], workSlot: "Foto: Darja tööl", videoSlot: "Video: pulmahommiku telgitagused",
@@ -51,7 +61,7 @@ export const copy = {
     book: "Записаться", viewWork: "Смотреть работы", eyebrow: "Причёски · макияж · брови · Таллинн",
     heroTitle: "Ваш день. Ваша красота.", heroText: "Причёски и макияж, в которых вы — это вы, только ещё красивее.", heroCaption: "Красота свадебного дня начинается здесь", scroll: "Листайте вниз",
     galleryKicker: "Портфолио / 01", galleryTitle: "Красота, которую помнят.", galleryText: "Мягкие локоны, продуманные укладки и макияж, в котором вы остаётесь собой.",
-    filters: { all: "Все работы", bridal: "Невесты", evening: "Вечерние", makeup: "Макияж", brows: "Брови" },
+    filters: { beforeAfter: "До и после", bridal: "Невесты", hairstyles: "Причёски" },
     noWorks: "Работы в этой категории скоро появятся.", close: "Закрыть", next: "Следующее фото", previous: "Предыдущее фото",
     aboutKicker: "Давайте знакомиться / 02", aboutTitle: "Привет, я Дарья.", aboutP1: "Я вкладываю душу в каждую причёску и каждый макияж. Самый прекрасный момент для меня — не последний взмах кистью, а ваша счастливая улыбка перед зеркалом.", aboutP2: "Я специализируюсь на свадебных причёсках и макияже, а ещё люблю создавать вечерние образы и оформлять брови. Жду вас в своей студии в Таллинне — или приеду к вам в ваш особенный день. Говорю по-русски и по-эстонски.", aboutSign: "С теплом, Дарья", futurePortrait: "Фото: портрет Дарьи",
     bridalKicker: "Свадебный день / 03", bridalTitle: "Утро, которое хочется помнить.", bridalText: "В свадебное утро думайте только о важном. На репетиции мы найдём ваш образ, а в день свадьбы я позабочусь о том, чтобы вы чувствовали себя красивой и свободной.", bridalTravel: "Выезжаю в усадьбы и свадебные площадки по всей Эстонии.", steps: ["Репетиция образа", "Свадебное утро", "Последний взгляд в зеркало"], workSlot: "Фото: Дарья за работой", videoSlot: "Видео: за кадром свадебного утра",
