@@ -8,8 +8,10 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    // Strip the trailing slash: newer router versions redirect-loop on it during prerender.
-    basepath: import.meta.env.BASE_URL.replace(/\/+$/, "") || "/",
+    basepath: import.meta.env.BASE_URL,
+    // Keep trailing-slash URLs as-is: the static prerenderer requests them and
+    // the default ("never") makes the router redirect-loop against it.
+    trailingSlash: "preserve",
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
   });
