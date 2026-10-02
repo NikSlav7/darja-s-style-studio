@@ -1,4 +1,3 @@
-import darja1 from "@/assets/darja1.jpg";
 import darja2 from "@/assets/darja2.jpg";
 import darja3 from "@/assets/darja3.jpg";
 import darja5 from "@/assets/darja5.jpg";
