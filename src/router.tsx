@@ -8,7 +8,8 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    basepath: import.meta.env.BASE_URL,
+    // Strip the trailing slash: newer router versions redirect-loop on it during prerender.
+    basepath: import.meta.env.BASE_URL.replace(/\/+$/, "") || "/",
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
   });
