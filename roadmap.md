@@ -8,3 +8,4 @@
 - [x] Remove the duplicate social gallery, reviews, and video placeholder; keep section 03 → price list → 06.
 - [x] Replace portfolio grid with a bilingual, swipeable carousel, thumbnails, lightbox, and booking link.
 - [x] Fix mobile contact heading overlap and refine the price-list presentation without changing copy or prices.
+- [x] Feature only the red-dress photo in section 03 and smooth the mobile menu opening.
