@@ -138,3 +138,16 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.6rem); }
 .spin { animation: form-spin 1s linear infinite; }
 @keyframes form-spin { to { transform: rotate(360deg); } }
 @media (max-width: 640px) { .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; padding: 13px 0; } .contact-form button[type="submit"] { width: 100%; justify-content: center; min-height: 54px; } .form-alt { flex-direction: column; gap: 14px; } .form-alt .text-link { min-height: 44px; } }
+.about-masters { font-size: 14px; color: var(--muted-foreground); font-style: italic; }
+.story-block { margin-top: 38px; padding-top: 26px; border-top: 1px solid var(--border); }
+.story-block h3 { font-family: var(--font-display); font-size: 28px; margin: 6px 0 14px; }
+.story-block p:not(.eyebrow) { font-size: 14px; line-height: 1.85; color: var(--muted-foreground); margin-top: 12px; }
+.price-group + .price-group { margin-top: 44px; }
+.price-group-title { font: 600 11px var(--font-sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted-foreground); padding-bottom: 6px; }
+.price-list .price-row { font-size: 22px; padding: 14px 0; }
+.price-list .price-value { font-size: 15px; color: var(--foreground); }
+.price-note { font-size: 13px; line-height: 1.75; color: var(--muted-foreground); padding: 10px 0 4px; }
+.price-booking { margin-top: 40px; font-size: 15px; line-height: 1.8; font-family: var(--font-display); font-style: italic; }
+.price-booking a { text-decoration: underline; text-underline-offset: 3px; }
+.story-closing { font-family: var(--font-display); font-style: italic; margin-top: 14px; }
+@media (max-width: 760px) { .price-list .price-row { font-size: 18px; } }
