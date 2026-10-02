@@ -167,6 +167,8 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.6rem); }
 .portfolio-carousel { max-width: 980px; margin-inline: auto; }
 .portfolio-carousel .filters { justify-content: center; }
 .carousel-stage { position: relative; width: 100%; aspect-ratio: 1.35; max-height: 680px; overflow: hidden; background: var(--muted); touch-action: pan-y; }
+.carousel-stage { animation: carousel-enter .38s ease-out both; }
+@keyframes carousel-enter { from { opacity: .45; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 .carousel-track { display: flex; height: 100%; transition: transform .55s cubic-bezier(.25,.72,.25,1); will-change: transform; }
 .carousel-slide { position: relative; flex: 0 0 100%; width: 100%; height: 100%; display: block; padding: 0; border-radius: 0; overflow: hidden; background: var(--muted); }
 .carousel-slide:hover { background: var(--muted); }

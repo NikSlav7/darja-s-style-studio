@@ -65,7 +65,7 @@ export function PortfolioCarousel({ lang }: { lang: Language }) {
     </div>
     <div id="portfolio-panel" role="tabpanel" aria-labelledby={`portfolio-tab-${category}`}>
       {items.length && active ? <>
-        <div className={`carousel-stage carousel-${category}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div key={category} className={`carousel-stage carousel-${category}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
           <div key={category} className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
             {items.map((item, i) => <Button key={item.id} type="button" variant="ghost" className="carousel-slide" tabIndex={i === index ? 0 : -1} aria-label={`${t.viewWork}: ${item.alt[lang]}`} onClick={() => setLightboxOpen(true)}><img src={item.src} alt={item.alt[lang]} loading={i === 0 ? "eager" : "lazy"}/></Button>)}
           </div>

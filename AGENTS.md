@@ -17,3 +17,4 @@
 - TanStack Router must use `trailingSlash: "preserve"` in `src/router.tsx`: the static prerenderer requests trailing-slash URLs and the default ("never") causes an infinite redirect loop that skips prerendering.
 
 - Keep gallery category content and labels in the shared bilingual data module, and use bundled image files for static GitHub Pages compatibility.
+- Keep portfolio carousel behavior in its own presentation component, reading the single gallery list from the shared bilingual data module, so photos can be added without changing layout code.
