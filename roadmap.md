@@ -3,3 +3,6 @@
 - [x] Add portfolio, bridal, services, reviews, social, and contact experiences with editable content.
 - [x] Add language-specific discoverability metadata and structured business information.
 - [x] Show only seven uploaded transformations in the three-category portfolio; use the new Darja portrait in About.
+- [ ] Add three bridal and five hairstyle images to their portfolio categories.
+- [ ] Refine portfolio interaction and About presentation without changing Darja's own words.
+- [ ] Remove the duplicate social gallery, reviews, and video placeholder; keep section 03 → price list → 06.
