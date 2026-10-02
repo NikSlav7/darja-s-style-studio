@@ -3,8 +3,8 @@ import { join, relative } from "node:path";
 
 const root = process.cwd();
 const outputDirectory = join(root, "dist", "client");
-const repositoryName = process.env["REPOSITORY_NAME"];
-if (!repositoryName) throw new Error("REPOSITORY_NAME is required.");
+const basePath = (process.env["BASE_PATH"] || "/").replace(/\/?$/, "/");
+const repositoryName = basePath.replace(/^\/|\/$/g, "");
 
 async function exists(p: string) {
   try { await stat(p); return true; } catch { return false; }
@@ -46,8 +46,7 @@ for (const lang of ["et", "ru"]) {
   if (await exists(target)) continue;
   const candidates = [
     join(outputDirectory, `${lang}.html`),
-    join(outputDirectory, repositoryName, lang, "index.html"),
-    join(outputDirectory, repositoryName, `${lang}.html`),
+    ...(repositoryName ? [join(outputDirectory, repositoryName, lang, "index.html"), join(outputDirectory, repositoryName, `${lang}.html`)] : []),
   ];
   for (const c of candidates) {
     if (await exists(c)) {
@@ -70,7 +69,7 @@ if (missing.length) {
   throw new Error(msg);
 }
 
-const estonianUrl = `/${repositoryName}/et/`;
+const estonianUrl = `${basePath}et/`;
 const redirectPage = `<!doctype html>
 <html lang="et">
   <head>
